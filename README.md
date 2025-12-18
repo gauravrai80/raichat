@@ -105,9 +105,12 @@ cp .env.example .env
 **Configure your `.env` file:**
 
 ```env
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=http://localhost:5000
 VITE_SOCKET_URL=http://localhost:5000
+VITE_APP_NAME=Chat App
 ```
+
+> **Note**: For local development, the API URL should NOT include `/api` suffix. The client will automatically append it.
 
 ### 4. Start MongoDB
 
@@ -142,6 +145,30 @@ npm run dev
 ```
 
 Client will run on `http://localhost:5173`
+
+## 🌐 Production Deployment
+
+Ready to deploy your chat app to production? Follow our comprehensive deployment guide:
+
+**📘 [View Deployment Guide](DEPLOYMENT.md)**
+
+The guide covers:
+- ✅ MongoDB Atlas setup
+- ✅ Cloudinary configuration
+- ✅ Backend deployment (Render/Railway/Heroku)
+- ✅ Frontend deployment (Netlify)
+- ✅ Environment variables setup
+- ✅ Troubleshooting common issues
+- ✅ Post-deployment verification
+
+### Quick Deploy Summary
+
+1. **Backend**: Deploy to Render/Railway/Heroku with environment variables
+2. **Frontend**: Deploy to Netlify with `VITE_API_URL` and `VITE_SOCKET_URL`
+3. **Database**: Use MongoDB Atlas (free tier available)
+4. **File Storage**: Configure Cloudinary credentials
+
+> **Important**: Make sure to update `CLIENT_URL` on backend and `VITE_API_URL`/`VITE_SOCKET_URL` on frontend with your production URLs!
 
 ## 📖 Usage
 
