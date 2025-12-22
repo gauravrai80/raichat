@@ -12,6 +12,7 @@ import userRoutes from './routes/users.js';
 import conversationRoutes from './routes/conversations.js';
 import messageRoutes from './routes/messages.js';
 import uploadRoutes from './routes/upload.js';
+import { forgotPassword, resetPassword, verifyResetToken } from './controllers/passwordResetController.js';
 
 // Import Socket.IO handler
 import { initializeSocket } from './socket/socketHandler.js';
@@ -115,6 +116,11 @@ app.use('/api/users', userRoutes);
 app.use('/api/conversations', conversationRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/upload', uploadRoutes);
+
+// Password Reset Routes (public)
+app.post('/api/auth/forgot-password', forgotPassword);
+app.post('/api/auth/reset-password/:token', resetPassword);
+app.get('/api/auth/verify-reset-token/:token', verifyResetToken);
 
 // Health check endpoint
 app.get('/health', (req, res) => {

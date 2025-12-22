@@ -5,7 +5,7 @@ import { getAllUsers } from '../services/userService';
 import { useSocket } from '../context/SocketContext';
 import ProfileEditModal from './ProfileEditModal';
 
-const Sidebar = () => {
+const Sidebar = ({ onClose }) => {
     const { user, logout } = useAuth();
     const { createConversation } = useChat();
     const { onlineUsers } = useSocket();
@@ -34,6 +34,10 @@ const Sidebar = () => {
     const handleStartChat = async (userId) => {
         await createConversation(userId);
         setShowUsers(false);
+        // Close sidebar on mobile after selecting a user
+        if (onClose) {
+            onClose();
+        }
     };
 
     const isUserOnline = (userId) => {

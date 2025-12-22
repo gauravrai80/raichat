@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import PasswordInput from '../components/PasswordInput';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -116,15 +117,13 @@ const Register = () => {
                             <label htmlFor="password" className="block text-white font-medium mb-2">
                                 Password
                             </label>
-                            <input
-                                type="password"
-                                id="password"
+                            <PasswordInput
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
-                                placeholder="Create a password"
-                                required
+                                placeholder="Create a password (min 6 characters)"
+                                autoComplete="new-password"
+                                className="w-full bg-white/20 border-white/30 text-white placeholder-white/60 focus:ring-white/50"
                             />
                         </div>
 
@@ -132,15 +131,13 @@ const Register = () => {
                             <label htmlFor="confirmPassword" className="block text-white font-medium mb-2">
                                 Confirm Password
                             </label>
-                            <input
-                                type="password"
-                                id="confirmPassword"
+                            <PasswordInput
                                 name="confirmPassword"
                                 value={formData.confirmPassword}
                                 onChange={handleChange}
-                                className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
                                 placeholder="Confirm your password"
-                                required
+                                autoComplete="new-password"
+                                className="w-full bg-white/20 border-white/30 text-white placeholder-white/60 focus:ring-white/50"
                             />
                         </div>
 
