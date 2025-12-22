@@ -84,8 +84,8 @@ const MessageInput = () => {
     };
 
     return (
-        <div className="border-t border-gray-200 p-4 bg-white">
-            <form onSubmit={handleSubmit} className="flex items-center space-x-2">
+        <div className="border-t border-[var(--color-border)] p-4 bg-white">
+            <form onSubmit={handleSubmit} className="flex items-center gap-2">
                 {/* File upload button */}
                 <input
                     type="file"
@@ -98,8 +98,9 @@ const MessageInput = () => {
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     disabled={uploading || !selectedConversation}
-                    className="p-2 text-gray-500 hover:text-primary-600 hover:bg-gray-100 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn-icon text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] disabled:opacity-50 disabled:cursor-not-allowed"
                     title="Attach file"
+                    aria-label="Attach file"
                 >
                     {uploading ? (
                         <svg className="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24">
@@ -120,16 +121,17 @@ const MessageInput = () => {
                     onChange={handleTyping}
                     placeholder={selectedConversation ? "Type a message..." : "Select a conversation"}
                     disabled={!selectedConversation}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="flex-1 px-4 py-3 bg-gray-50 border border-transparent rounded-full focus:outline-none focus:bg-white focus:border-[var(--color-primary)] disabled:bg-gray-100 disabled:cursor-not-allowed transition-all duration-200"
                 />
 
                 {/* Send button */}
                 <button
                     type="submit"
                     disabled={!message.trim() || !selectedConversation}
-                    className="p-2 bg-primary-600 text-white rounded-full hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-11 h-11 flex items-center justify-center bg-[var(--color-primary)] text-white rounded-full hover:bg-[var(--color-primary-hover)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-[var(--color-primary)]"
+                    aria-label="Send message"
                 >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>
                 </button>
